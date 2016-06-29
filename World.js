@@ -6,17 +6,19 @@ var World = function (Data) {
 	var events;
 	var startDate = startDate && Date(Data.StartDate) || Date();
 	var deltaDate = Data.deltaDate || 1;
+	var chance = Data.chance;
+	Transaction.prototype.chanceMiss = chance["error transaction"];
+	
 
 	this.step = function(){
 		for(let y = 0; y < deltaDate; y++)
 		{
-			startDate.setDate(startDate.getDate() + deltaDate);
 			for(let c in countrys)
 			{
-				events = events.concat(c.GetEvents());
+				events = events.concat(c.getEvents());
 			}
 			for (let o in orders) {
-				events = events.concat(o.GetEvents());
+				events = events.concat(o.getEvents());
 			}
 		}
 	};
@@ -31,3 +33,7 @@ var World = function (Data) {
 
 	}
 };
+
+function addDate(a,b) {
+	a.setDate(a.getDate() + a);
+}

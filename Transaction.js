@@ -17,6 +17,13 @@ class Transaction{
             resevent = new Event(3, 0, "Транзакция №" + this.num.toString() + " выполнена", "Плательщик (" + this.customer.getFullName +
                                                                 ") перевел Продавцу("  + this.executor.getFullName +
                                                                 ") сумму " + this.price.numPrice + " прописью " + this.price.stringPrice);
+            let ch = Math.random();
+            if(ch < this.chanceMiss)
+            {
+                resevent = new Event(3,2,"Транзакция №" + this.num.toString() + " не выполнена, ошибка банка",
+                                        "Плательщик (" + this.customer.getFullName +
+                                        "), Продавц("  + this.executor.getFullName );
+            }
         }else{
             if(event1.clas === 0)
             {
@@ -27,6 +34,7 @@ class Transaction{
                 resevent = new Event(3,2,"Транзакция №" + this.num.toString() + " не выполнена", "Счет продавца (" + this.customer.getFullName + "заблокирован");
             }
         }
+        
         return resevent;
     }
 }
