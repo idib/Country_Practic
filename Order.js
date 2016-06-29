@@ -4,7 +4,7 @@ class Order {
         this.LastDate = dat;
         this.NowDate = dat;
         this.objectDeal = executor.GetGood();
-        this.transaction = new Transaction (customer , executor, objectDeal.price);
+        this.transaction = new Transaction (customer , executor, this.objectDeal.price);
     }
     
     GetEvents(dat){
